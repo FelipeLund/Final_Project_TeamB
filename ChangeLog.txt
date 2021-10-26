@@ -1,1 +1,4 @@
+[dd-mm-yy]
+[26-10-21] Created a GitHub repository. Did our first commits in order to set up a file structure, and added some main files. We also explored how to pull and push from and to our repository.
 
+[27-10-21] 
