@@ -10,4 +10,15 @@ void project() {
 	//t.tempPerDay();
 	//t.hotCold();
 	//t.tempPerYear(2050);
+
+	TH1I* hist = new TH1I("temperature", "Temperature;Temperature
+	[#circC];Entries", 300, -20, 40);
+	hist->SetFillColor(kRed + 1);
+	hist->Fill(-3.2); //Increment the bin corresponding to -3.2 C
+	double mean = hist->GetMean(); //The mean of the distribution
+	double stdev = hist->GetRMS(); //The standard deviation
+	TCanvas* can = new TCanvas();
+	hist->Draw();
+
+	
 }
