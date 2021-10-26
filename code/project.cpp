@@ -20,10 +20,13 @@ void project() {
 	TCanvas* can = new TCanvas();
 	hist->Draw();
 
+	std::cout::"\n";
+                        
 	for(int bin = 1; bin <= hist->GetNbinsX(); ++bin) {
 		hist->SetBinContent(bin, 5);
 		hist->SetBinError(bin, sqrt(5.));
 	}
+
 
 	
 }
