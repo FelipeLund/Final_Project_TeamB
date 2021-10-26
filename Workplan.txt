@@ -1,1 +1,8 @@
 
+The three ideas that should produce results are:
+
+1. Temperature for every day of the year (with error bars)
+
+2. Length of seasons (fit with sinusoidal)
+
+3. Hottest or coldest temperature per year
