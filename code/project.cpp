@@ -20,5 +20,7 @@ void project() {
 	TCanvas* can = new TCanvas();
 	hist->Draw();
 
+	std::cout::"\n";
+
 	
 }
