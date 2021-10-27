@@ -6,3 +6,34 @@ The three ideas that should produce results are:
 2. Length of seasons (fit with sinusoidal)
 
 3. Hottest or coldest temperature per year
+
+
+
+First Steps Neded:
+
+1. Clean smhi files into easily-parsable csv files 
+2. Store clean files in clean_datasets folder
+3. Find functions to parse through csv
+
+
+Functions Needed for Result 1:
+- Exract temperature for specific day of the year
+- Create histogram
+- Define error bars and include them in histogram
+
+
+Functions Needed for Result 2:
+- Extract temperature for all days in year
+- Create histogram
+- Sinusoidal fitting
+- Distancea between sinusoidal peaks (should be easy to see from fit)
+
+
+Functions Needed for Result 3:
+- Get daily temperatures for a given year
+- Find maximum
+- Plot over time
+
+
+
+
