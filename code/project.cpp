@@ -2,7 +2,7 @@
 #include <string>
 
 void project() {
-	const std::string pathToFile = "/home/path/to/file/"; //Put the path to your data file here
+	const std::string pathToFile = "./cleandata"; //path to data file
 	tempTrender t(pathToFile); //Instantiate your analysis object
 	
 	//t.tempOnDay(8, 23); //Call some functions that you've implemented
@@ -18,17 +18,14 @@ void project() {
 	double mean = hist->GetMean(); //The mean of the distribution
 	double stdev = hist->GetRMS(); //The standard deviation
 	TCanvas* can = new TCanvas();
-	hist->Draw();
-
-	std::cout::"\n";
-                        
+                
 	for(int bin = 1; bin <= hist->GetNbinsX(); ++bin) {
 		hist->SetBinContent(bin, 5);
 		hist->SetBinError(bin, sqrt(5.));
 	}
+	hist->Draw();
 
-
+	std::cout::"\n";
 	
 }
 
-BLA bla bla
