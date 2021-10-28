@@ -5,10 +5,11 @@
 
 int main() {
 	const std::string pathToFile = "../CleanDatasets/CleanLund"; //path to data file
+
 	tempTrender t(pathToFile); //Instantiate your analysis object
 
 	
-	//t.tempOnDay(8, 23); //Call some functions that you've implemented
+	t.tempOnDay(8, 23); //Call some functions that you've implemented
 	//t.tempOnDay(235);
 	//t.tempPerDay();
 	//t.hotCold();
