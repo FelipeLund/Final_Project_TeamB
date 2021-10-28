@@ -110,7 +110,7 @@ STARTLINE=$(grep -n 'Datum' original_${DATAFILE} | cut -d':' -f 1)
 # data starts at the STARTLINE + 1 line, so to remove the header
 # where Datum;... is contained
 # TODO:
-STARTLINE=$(( $STARTLINE + 1 ))
+STARTLINE=$(( $STARTLINE ))
 
 # Remove unnecessary lines at the top of the datafile:
 # Strip away the top STARTLINE lines (the value of $STARTLINE) using 
