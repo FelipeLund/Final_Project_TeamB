@@ -4,12 +4,12 @@
 #include <iostream>
 
 int main() {
-	const std::string pathToFile = "./cleandata"; //path to data file
+	const std::string pathToFile = "./CleanLund.csv"; //path to data file
 	tempTrender t(pathToFile); //Instantiate your analysis object
 	std::cout << "Hello" << "\n";
 
 	
-	//t.tempOnDay(8, 23); //Call some functions that you've implemented
+	t.tempOnDay(8, 23); //Call some functions that you've implemented
 	//t.tempOnDay(235);
 	//t.tempPerDay();
 	//t.hotCold();

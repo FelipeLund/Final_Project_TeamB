@@ -3,5 +3,5 @@
 
 
 void some_func(int const num){
-    std::cout << num << "\n";
+    std::cout << "Some func called for constant " << num << "\n";
 }
