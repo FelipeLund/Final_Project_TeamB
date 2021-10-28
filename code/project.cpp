@@ -2,6 +2,7 @@
 #include <string>
 #include "parse_csv.h"
 #include <iostream>
+#include <vector>
 
 int main() {
 	const std::string pathToFile = "../CleanDatasets/CleanLund"; //path to data file
@@ -9,7 +10,7 @@ int main() {
 	tempTrender t(pathToFile); //Instantiate your analysis object
 
 	
-	t.tempOnDay(8, 27); //Call some functions that you've implemented
+	t.tempOnDay("1945-05-05"); //Call some functions that you've implemented
 	//t.tempOnDay(235);
 	//t.tempPerDay();
 	//t.hotCold();
@@ -29,7 +30,7 @@ int main() {
 	double mean = hist->GetMean(); //The mean of the distribution
 	double stdev = hist->GetRMS(); //The standard deviation
 	TCanvas* can = new TCanvas();
-                
+    //adding error bars
 	for(int bin = 1; bin <= hist->GetNbinsX(); ++bin) {
 		hist->SetBinContent(bin, 5);
 		hist->SetBinError(bin, sqrt(5.));
