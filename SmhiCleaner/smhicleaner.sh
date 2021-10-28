@@ -134,7 +134,7 @@ tail -n +$STARTLINE original_${DATAFILE} > clean1_${DATAFILE}
 #       "5. Select Multiple Fields from a File"
 # You can verify the generated file against the same file in tutorial3/homework3/result
 echo "Selecting only relevant columns, result in clean2_${DATAFILE}"
-cut -d';' -f 1,2,3,4,5 clean1_${DATAFILE} > clean2_${DATAFILE}
+cut -d';' -f 1,2,3,4 clean1_${DATAFILE} > clean2_${DATAFILE}
 
 # Convert format to C++ readable with spaces instead of commas:
 # Change semicolons to singe spaces using sed and 
