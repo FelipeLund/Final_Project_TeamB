@@ -14,7 +14,7 @@ if [[ "x$CITYFILE" == "x$DATAPATH/" ]]; then
 	echo "City $CITY not found, exiting"
 	exit 1
 fi
-
+#//make a temporary directory that is deleted in the end 
 cd $Og/SmhiCleaner/CleanerOutputs
 
 $Og/SmhiCleaner/smhicleaner.sh $CITYFILE > ./shmicleaner.log 2>&1
