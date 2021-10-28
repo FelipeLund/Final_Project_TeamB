@@ -2,11 +2,11 @@
 #include <string>
 #include "tempTrender.h"
 #include "parse_csv.h"
-#include "csv.hpp"
 
 tempTrender::tempTrender(const std::string& filePath) {
 	std::cout << "The user supplied " << filePath <<" as the path to the data file.\n";
 	std::cout << "You should probably store this information in a member variable of the class! Good luck with the project! :)\n";
+	std::cout << "filepath is stored in member variable called _filepath \n";
 	_filepath = filePath;
 }
 
@@ -20,14 +20,7 @@ reading the csv(){
 
 */
 
-
-//controling funtion
-std::cout << date << "splitted" << day << month << year << std::endl;
-
 //Make a histogram of the temperature on this day
-void tempTrender::tempOnDay(std:string date) const {
-	
-	}
 
 
 

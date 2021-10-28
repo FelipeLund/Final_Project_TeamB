@@ -1,7 +1,10 @@
 #include "parse_csv.h"
-#include <iostream>
+#include <string>
+
+//parsing the csv file with nuclei list
 
 
-void some_func(int const num){
-    std::cout << "Some func called for constant " << num << "\n";
-}
+
+
+
+
