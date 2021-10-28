@@ -2,6 +2,8 @@
 #include "parse_csv.h"
 #include <string>
 #include <iostream>
+
+// Root Includes 
 #include <TH1F.h>
 #include <TF1.h>
 #include <TStyle.h>
@@ -13,18 +15,12 @@ std::vector<double> extrac_temp_for_day(int month, int day, const std::string& f
 	std::string _month;
 	std::string _day;
 	std::string test_string;
-	if (month < 10){
-		_month = "0" + std::to_string(month);
-	}
-	else{
-		_month = std::to_string(month);
-	}
-	if (day < 10){
-		_day = "0" + std::to_string(day);
-	}
-	else{
-		_day = std::to_string(day);
-	}
+
+	// Making sure month and day is in the correct format
+	if (month < 10){_month = "0" + std::to_string(month);}
+	else{_month = std::to_string(month);}
+	if (day < 10){_day = "0" + std::to_string(day);}
+	else{_day = std::to_string(day);}
 
 	// Final String
 	test_string = _month + "-" + _day;
@@ -41,18 +37,11 @@ std::vector<double> extrac_temp_for_day(int month, int day, const std::string& f
 	// Pushing to info vector
 	while(in.read_row(datum, tid, temp, quality)){
 		if (datum.substr(5, 5) == test_string){
-			//std::cout << "Getting temperature for date: " << datum <<  "\n";
 			info_vector.push_back(temp);
 		};
 
 	};
 	
-	/*
-	for (double i : info_vector){
-		std::cout << "i value: " << i << "\n";
-	};
-	*/
-
 	return info_vector;
 }
 
