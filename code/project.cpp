@@ -9,18 +9,23 @@ int main() {
 	tempTrender t(pathToFile); //Instantiate your analysis object
 
 	
-	t.tempOnDay(8, 23); //Call some functions that you've implemented
+	t.tempOnDay(8, 27); //Call some functions that you've implemented
 	//t.tempOnDay(235);
 	//t.tempPerDay();
 	//t.hotCold();
 	//t.tempPerYear(2050);
 
 	
-
+	//Creating histogram
 	TH1I* hist = new TH1I("temperature", "Temperature;Temperature
 	[#circC];Entries", 300, -20, 40);
 	hist->SetFillColor(kRed + 1);
-	hist->Fill(-3.2); //Increment the bin corresponding to -3.2 C
+	
+	//Filling the histogram
+	for (int index = 0; index < degree.size()){
+		hist->Fill(degree[index]); //Increment the bin corresponding 
+	}
+	
 	double mean = hist->GetMean(); //The mean of the distribution
 	double stdev = hist->GetRMS(); //The standard deviation
 	TCanvas* can = new TCanvas();
