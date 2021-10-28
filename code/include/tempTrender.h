@@ -2,6 +2,8 @@
 #define TEMPTRENDER_H
 
 #include <string>
+#include "parse_csv.h"
+
 class tempTrender {
 	public:
 		std::string _filepath;
