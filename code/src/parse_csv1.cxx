@@ -1,6 +1,7 @@
 #include "parse_csv1.h"
 
 //parsing the csv file with nuclei list
+
 std::vector<string> parse_smhi(const std::string& filename) {
 	io::CSVReader<4> input{filename};
 	input.set_header("Datum", "Tid (UTC)", "Lufttemperatur", "Kvalitet" );
