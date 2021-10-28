@@ -143,7 +143,7 @@ cut -d';' -f 1,2,3,4,5 clean1_${DATAFILE} > clean2_${DATAFILE}
 # and here: https://linuxize.com/post/how-to-use-sed-to-find-and-replace-string-in-files/
 # You can verify the generated file against the same file in tutorial3/homework3/result
 echo "Substituting the ; with spaces, result in rawdata_${DATAFILE}"
-sed 's/;/ /g' clean2_${DATAFILE} > rawdata_${DATAFILE}
+sed 's/;/,/g' clean2_${DATAFILE} > rawdata_${DATAFILE}
 
 # Print sizes of generated .csv files in a stats file:
 # Using a for, scan all the .csv files in the folder and write out a
