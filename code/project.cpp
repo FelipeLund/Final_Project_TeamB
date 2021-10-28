@@ -4,9 +4,8 @@
 #include <iostream>
 
 int main() {
-	const std::string pathToFile = "./cleandata"; //path to data file
+	const std::string pathToFile = "../CleanDatasets/CleanLund"; //path to data file
 	tempTrender t(pathToFile); //Instantiate your analysis object
-	std::cout << "Hello" << "\n";
 
 	
 	//t.tempOnDay(8, 23); //Call some functions that you've implemented
@@ -15,7 +14,7 @@ int main() {
 	//t.hotCold();
 	//t.tempPerYear(2050);
 
-	/*
+	
 
 	TH1I* hist = new TH1I("temperature", "Temperature;Temperature
 	[#circC];Entries", 300, -20, 40);
@@ -34,7 +33,7 @@ int main() {
 	std::cout::"\n";
 
 
-	*/
+	
 	return 0;
 	
 }
