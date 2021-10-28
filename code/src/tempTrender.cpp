@@ -21,6 +21,11 @@ void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const {
 	}
 
 //Make a histogram of the temperature on this day
+void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const {
+	for (){
+		
+	}
+ 
 // void tempTrender::tempOnDay(int dateToCalculate) const {} //Make a histogram of the temperature on this date
 // void tempTrender::tempPerDay() const {} //Make a histogram of the average temperature of each day of the year
 // void tempTrender::hotCold() const {} //Make a histogram of the hottest and coldest day of the year
