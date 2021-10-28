@@ -1,9 +1,9 @@
 #ifndef PARSE_CSV2_H
 #define PARSE_CSV2_H
-#include <csv/csv.h>
+#include <fast-cpp-csv-parser/csv.h>
 #include <iostream>
 #include <vector>
 #include <string>
-std::vector<Nucleus> parse_Nucleus(const std::string& filename);
+std::vector<string> parse_smhi(const std::string& filename);
 
 #endif // PARSE_CSV_H
