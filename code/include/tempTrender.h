@@ -13,6 +13,8 @@ class tempTrender {
 
 	// Make a histogram of the temperature on this day
 	void tempOnDay(int monthToCalculate, int dayToCalculate) const; 
+
+	void maxTempOverTime() const;
 	
 	// void tempOnDay(int dateToCalculate) const; //Make a histogram of the temperature on this date
 
