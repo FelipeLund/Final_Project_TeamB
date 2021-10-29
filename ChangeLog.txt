@@ -7,3 +7,5 @@
 
 [29-10-21] Separated the functions we have tested in main into their respective .h and .cpp files in the include/ and src/ directories. Function that returns vector of max temperature for each year (result 3) is ready. 
 
+
+[29-10-21] The three that provide the data that will be used to create the plot of the results are ready. We will make it so that one can initialize a tempTrender object (lets call it lund) in root by giving a filepath. Then with lund.tempOnDay(int day, int month) then it would run all functions to fetch the data and then plot a histogram.
