@@ -22,30 +22,7 @@ int main() {
 	tempTrender t(pathToFile); //Instantiate your analysis object
 	t.tempOnDay(12, 15);
 	t.maxTempOverTime();
-	getYearsList("CleanLund.csv");
-
-	std::string test_string = "12-15";
-	std::vector<double> info_vector = maxTempInYears(t._filepath);
-	std::vector<int> year_vector = getYearsList(t._filepath);
-
-	/*
-	for (auto i : info_vector){
-		std::cout<< i<<", ";
-	};
-	*/
-
-	std::cout << "Size of yearsList vector : " << year_vector.size() << "\n";
-	std::cout << "First year in years list: " << year_vector[0] << "\n";
-	int n = year_vector.size();
-	std::cout << "Last year in years list: " << year_vector[n-1] << "\n";
-	std::cout << "Size of maxtempYear vector : " << info_vector.size() << "\n";
-
-	//t.tempOnDay(235);
-	//t.tempPerDay();
-	//t.hotCold();
-	//t.tempPerYear(2050);
-
-	
+	t.dailyTempOverTime();
 
 	/*
 	TH1I* hist = new TH1I("temperature", "Temperature;Temperature[#circC];Entries", 300, -20, 40);
