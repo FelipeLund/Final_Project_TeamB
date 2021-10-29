@@ -10,9 +10,9 @@ std::vector<double> maxTempInYears(std::string& filename);
 
 std::vector<int> getYearsList(const std::string& filename);
 
-double avgTempInDay(int day_number,const std::string& filename);
-
 std::vector<std::string> getAllDatums(const std::string& filename);
+
+std::vector<double> getDailyTempOverTime(const std::string& filename);
 
 
 #endif // PARSE_CSV_H

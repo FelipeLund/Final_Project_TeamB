@@ -10,6 +10,8 @@ tempTrender::tempTrender(const std::string& filePath) {
 }
 
 void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const{
+	std::cout << "Starting tempOnDay Function... \n";
+
 	// Converting integer month and day to string for comparing with Datum column
 	std::string _month;
 	std::string _day;
@@ -30,7 +32,6 @@ void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const{
 	info_vector = extract_temp_for_month_day (test_string, filename);
 
 	// Printing to make sure things work
-	std::cout << "First element of info_vector "<< info_vector[0] << "\n";
 	std::cout << "Now we start making the hist... \n";
 }
 
@@ -43,10 +44,16 @@ void tempTrender::maxTempOverTime()const {
 	std::cout << "First element of max_temps vector: "<< max_temps[0] <<  "\n";
 	std::cout << "Plotting Max Temp Over Time starting... \n";
 
+	// makehistogram();
+
 }
 
+void tempTrender::dailyTempOverTime()const{
+	std::cout << "Getting average daily temp for every single day... \n";
+	std::vector<double> dailyTempOvertime = getDailyTempOverTime(_filepath);
+	int n = dailyTempOvertime.size();
+	std::cout << "Number of days: " << n << "\n";
 
-// void tempTrender::tempOnDay(int dateToCalculate) const {} //Make a histogram of the temperature on this date
-// void tempTrender::tempPerDay() const {} //Make a histogram of the average temperature of each day of the year
-// void tempTrender::hotCold() const {} //Make a histogram of the hottest and coldest day of the year
-// void tempTrender::tempPerYear(int yearToExtrapolate) const {} //Make a histogram of average temperature per year, then fit and extrapolate to the given year
+	// makehistogram();
+	
+}

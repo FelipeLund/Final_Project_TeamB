@@ -114,11 +114,33 @@ std::vector<std::string> getAllDatums(const std::string& filename){
     return all_datums;
 }
 
-/*
+std::vector<double> getDailyTempOverTime(const std::string& filename){
+    // Opening file and specifying variables for columns
+	io::CSVReader<4> in(filename);
+	in.read_header(io::ignore_extra_column, "Datum", "Tid (UTC)", "Lufttemperatur", "Kvalitet");
 
-double avgTempThroughDay(int day_number,const std::string& filename){
+    //Specifying variables in each column
+	std::string datum{}; std::string tid{};
+	std::string quality{}; double temp;
+
+    // Creating vectors to be used
+    std::vector<double> dailyTempOverTime;
     std::vector<std::string> all_datums = getAllDatums(filename);
+    int n = all_datums.size();
+    std::string last_datum = all_datums[n - 1];
 
+    for (std::string day : all_datums){
+        if (day == last_datum){break;}
+        in.read_row(datum, tid, temp, quality);
+        std::vector<double> day_temp;
+        while (day == datum){
+            in.read_row(datum,tid, temp, quality);
+            //std::cout << datum << "\n";
+            day_temp.push_back(temp);
+        }
+        double average = accumulate(day_temp.begin(), day_temp.end(), 0.0) / day_temp.size();
+        dailyTempOverTime.push_back(average);
+    }
+
+    return dailyTempOverTime;
 }
-*/
-
