@@ -3,4 +3,7 @@
 
 [27-10-21] Created a Make-file and prepared for implementation of csv-parser. Put together a data-cleaner bash script.
 
-[28-10-21] Updated all the city files(removed unwanted commas). Parser functions work and daily temperature function is ready. We initialized root. Thing to do for tomorrow: open ROOT and run the .cpp file.
+[28-10-21] Updated all the city files(removed unwanted commas). Made sure csv.h parser functions work and extraction for info of daily temperature function (result1) is ready. Started to look into root plotting hists. Thing to do for tomorrow: open ROOT and run the .cpp file.
+
+[29-10-21] Separated the functions we have tested in main into their respective .h and .cpp files in the include/ and src/ directories. Function that returns vector of max temperature for each year (result 3) is ready. 
+
