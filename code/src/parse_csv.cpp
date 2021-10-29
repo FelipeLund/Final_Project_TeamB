@@ -8,7 +8,7 @@ void some_func(const int num){
     std::cout << "some_func_called to print " << num << "\n"; 
 }
 
-std::vector<double> extract_temp_for_month_day (std::string test_string, std::string& filename){
+std::vector<double> extract_temp_for_month_day (const std::string test_string, const std::string& filename){
     
     // Creating empty vector and opening csv file
     std::vector<double> info_vector;

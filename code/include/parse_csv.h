@@ -4,7 +4,7 @@
 
 void some_func(const int num);
 
-std::vector<double> extract_temp_for_month_day (std::string test_string, std::string& filename);
+std::vector<double> extract_temp_for_month_day (const std::string test_string, const std::string& filename);
 
 double maxTempInYear(std::string& filename);
 
