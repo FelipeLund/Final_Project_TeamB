@@ -12,21 +12,14 @@
 */
 
 
+void test_func(int a){
+	std::cout << a << "\n";
+}
+
 int main() {
-	const std::string pathToFile = "../CleanDatasets/CleanLund.csv"; //path to data file
+	const std::string pathToFile = "./ClnData/CleanLund.csv"; //path to data file
 
 	tempTrender t(pathToFile); //Instantiate your analysis object
-	//t.tempOnDay(8, 23); //Call some functions that you've implemented
-
-	std::vector<double> info_vector;
-	std::string filename = ("CleanLund.csv");
-	info_vector = extrac_temp_for_day(12, 15, filename);
-	/*
-	for (double i : info_vector){
-		std::cout << "i value: " << i << "\n";
-		//double new_i;
-	}
-	*/
 	t.tempOnDay(12, 15);
 
 	//t.tempOnDay(235);

@@ -30,4 +30,26 @@ std::vector<double> extract_temp_for_month_day (std::string test_string, std::st
     return info_vector;
 }
 
+double maxTempInYears(std::string& filename){
+    std::vector<double> year_temp_vector;
+    //double t;
+
+    // Opening file and specifying variables for columns
+	io::CSVReader<4> in(filename);
+	in.read_header(io::ignore_extra_column, "Datum", "Tid (UTC)", "Lufttemperatur", "Kvalitet");
+    std::string year;
+
+    /*
+    while(in.read_row(datum , tid, temp, quality)){
+        //year = datum.substr9;
+
+
+
+    }
+    */
+
+
+    return 0.;
+}
+
 

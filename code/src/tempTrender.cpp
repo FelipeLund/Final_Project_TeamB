@@ -34,9 +34,10 @@ void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const{
 	std::cout << "Now we start making the hist... \n";
 }
 
-//Make a histogram of the temperature on this day
 
-
+void tempTrender::maxTempOverTime()const {
+	std::cout << "Max Temp Over Time starting... \n";
+}
 
 
 // void tempTrender::tempOnDay(int dateToCalculate) const {} //Make a histogram of the temperature on this date
