@@ -4,7 +4,8 @@
 
 void some_func(const int num);
 
-std::vector<double> extrac_temp_for_day(int month, int day, const std::string& filename);
+std::vector<double> extract_temp_for_month_day (std::string test_string, std::string& filename);
+
 
 
 #endif // PARSE_CSV_H
