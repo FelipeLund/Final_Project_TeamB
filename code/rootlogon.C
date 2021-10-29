@@ -15,8 +15,8 @@ void rootlogon() {
   
   // Simon's path: /home/stropp/Project/Final_Project_TeamB/code/include
 
-  gSystem->AddIncludePath("-I/home/fe7756ab/Final_Project/Final_Project_TeamB/code/include");
-  gSystem->AddIncludePath("-I/home/fe7756ab/Final_Project/Final_Project_TeamB/code/external/include");
+  gSystem->AddIncludePath("-I/home/stropp/Project/Final_Project_TeamB/code/include");
+  gSystem->AddIncludePath("-I/home/stropp/Project/Final_Project_TeamB/code/external/include");
   //  You can add multiple flags if you have multiple directories to add
   // gSystem->AddIncludePath("-I/home/einarelen/project/include -I/home/einarelen/project/external/include");
   // Or you can keep adding them one by one, which looks neater
@@ -33,7 +33,8 @@ void rootlogon() {
   // gSystem->AddLinkedLibs(" -L/home/einarelen/project/external/lib64 -Wl,-rpath=/home/einarelen/project/external/lib64 -lfmt");
 
   gROOT->ProcessLine(".L src/tempTrender.cpp+"); //Load the classes that we want to use automatically - Convenient!
-  gROOT->ProcessLine(".L project.cpp+"); //The + means to recompile only if it changed sine last time
+  gROOT->ProcessLine(".L src/parse_csv.cpp+"); //The + means to recompile only if it changed sine last time
+  gROOT->ProcessLine(".L project.cpp+");
   //Now you can type project() to invoke the function defined in project
   //You can also create and invoke functions in a temptrender manually by doing e.g. tempTrender t(pathToFile); t.hotCold();
 }
