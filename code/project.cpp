@@ -18,7 +18,7 @@ void create_hist(std::vector<double> vector_of_degrees){
 	hist->SetFillColor(kRed + 1); //red color
 	//adding all elements to histogram
 	for (double element : vector_of_degrees){
-		hist->Fill(element);
+    hist->Fill(element);
 	}
 	double mean = hist->GetMean(); //The mean of the distribution
 	double stdev = hist->GetRMS(); //The standard deviation
@@ -26,13 +26,15 @@ void create_hist(std::vector<double> vector_of_degrees){
 
 	hist->Draw();
 }
-	
+
 
 int main() {
 	const std::string pathToFile = "./ClnData/CleanLund.csv"; //path to data file
 
 	tempTrender t(pathToFile); //Instantiate your analysis object
+	t.tempOnDay(12, 15);
+	t.maxTempOverTime();
+	t.dailyTempOverTime();
 
 	return 0;	
 }
-
