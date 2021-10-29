@@ -37,6 +37,12 @@ void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const{
 
 void tempTrender::maxTempOverTime()const {
 	std::cout << "Max Temp Over Time starting... \n";
+	std::vector<double> max_temps;
+	std::string filename = _filepath;
+	max_temps = maxTempInYears(filename);
+	std::cout << "First element of max_temps vector: "<< max_temps[0] <<  "\n";
+	std::cout << "Plotting Max Temp Over Time starting... \n";
+
 }
 
 

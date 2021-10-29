@@ -6,7 +6,13 @@ void some_func(const int num);
 
 std::vector<double> extract_temp_for_month_day (std::string test_string, std::string& filename);
 
-double maxTempInYear(std::string& filename);
+std::vector<double> maxTempInYears(std::string& filename);
+
+std::vector<int> getYearsList(const std::string& filename);
+
+double avgTempInDay(int day_number,const std::string& filename);
+
+std::vector<std::string> getAllDatums(const std::string& filename);
 
 
 #endif // PARSE_CSV_H
