@@ -4,57 +4,37 @@
 #include <iostream>
 
 // Root Includes 
-/*
 #include <TH1F.h>
 #include <TF1.h>
 #include <TStyle.h>
 #include <TCanvas.h>
-*/
 
+//Extracting information to a vector
+std::vector<double> info_vector = extract_temp_for_month_day ("05-10", "./ClnData/CleanLund.csv");	
 
-void test_func(int a){
-	std::cout << a << "\n";
+//Function to create hisotgrams
+void create_hist(std::vector<double> vector_of_degrees){
+	TH1I* hist = new TH1I("temperature", "Temperature;Temperature[#circC];Entries", 100, -20, 40);
+	hist->SetFillColor(kRed + 1); //red color
+	//adding all elements to histogram
+	for (double element : vector_of_degrees){
+    hist->Fill(element);
+	}
+	double mean = hist->GetMean(); //The mean of the distribution
+	double stdev = hist->GetRMS(); //The standard deviation
+	TCanvas* can = new TCanvas();
+
+	hist->Draw();
 }
+
 
 int main() {
 	const std::string pathToFile = "./ClnData/CleanLund.csv"; //path to data file
 
 	tempTrender t(pathToFile); //Instantiate your analysis object
 	t.tempOnDay(12, 15);
+	t.maxTempOverTime();
+	t.dailyTempOverTime();
 
-	//t.tempOnDay(235);
-	//t.tempPerDay();
-	//t.hotCold();
-	//t.tempPerYear(2050);
-
-	
-
-	/*
-	TH1I* hist = new TH1I("temperature", "Temperature;Temperature[#circC];Entries", 300, -20, 40);
-	hist->SetFillColor(kRed + 1);
-
-	for (double element : info_vector){
-		hist->Fill(element);
-	}
-	
-	double mean = hist->GetMean(); //The mean of the distribution
-	double stdev = hist->GetRMS(); //The standard deviation
-	TCanvas* can = new TCanvas();
-                
-	// Adding Error Bars			
-	for(int bin = 1; bin <= hist->GetNbinsX(); ++bin) {
-		hist->SetBinContent(bin, 5);
-		hist->SetBinError(bin, sqrt(5.));
-	}
-	hist->Draw();
-
-	std::cout << "\n";
-	*/
-
-
-
-	
-	return 0;
-	
+	return 0;	
 }
-
