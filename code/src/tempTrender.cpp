@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <numeric>
 #include "tempTrender.h"
 
 tempTrender::tempTrender(const std::string& filePath) {
@@ -19,10 +20,12 @@ void tempTrender::create_hist(std::vector<double> vector_of_degrees) const{
 	}
 	double mean = hist->GetMean(); //The mean of the distribution
 	double stdev = hist->GetRMS(); //The standard deviation
-	TCanvas* can = new TCanvas();
+	TCanvas* c1 = new TCanvas();
 
 	hist->Draw();
 }
+
+
 
 void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const{
 	std::cout << "Starting tempOnDay Function... \n";
@@ -46,13 +49,10 @@ void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const{
 	std::string filename = _filepath;
 	info_vector = extract_temp_for_month_day (test_string, filename);
 
-	// Printing to make sure things work
-	std::cout << "Now we start making the hist... \n";
 
 	// Creating and printing the histogram
+	std::cout << "Now making a histogram.\n";
 	create_hist(info_vector);
-	
-	std::cout << "histogram??... \n";
 }
 
 
@@ -63,8 +63,17 @@ void tempTrender::maxTempOverTime()const {
 	max_temps = maxTempInYears(filename);
 	std::cout << "First element of max_temps vector: "<< max_temps[0] <<  "\n";
 	std::cout << "Plotting Max Temp Over Time starting... \n";
+	
+	// Plotting the data
+	std::vector<double> years = getYearsList(filename);
+	TCanvas* c2 = new TCanvas();
+	int n = years.size();
+	max_temps.pop_back();
+	TGraph *gr = new TGraph(n, &years[0], &max_temps[0]);
+   	gr->SetTitle("Max Temperatures every year");
+   	gr->Draw();
 
-	// makehistogram();
+
 
 }
 
@@ -74,6 +83,15 @@ void tempTrender::dailyTempOverTime()const{
 	int n = dailyTempOvertime.size();
 	std::cout << "Number of days: " << n << "\n";
 
-	// makehistogram();
+	// Plotting the data
+	double start = 1;
+	std::vector<double> days_passed(n);
+	std::iota(days_passed.begin(), days_passed.end(), start);
+	TCanvas* c3 = new TCanvas();
+	c3->SetCanvasSize(3000, 500); 
+
+	TGraph *gr = new TGraph(n, &days_passed[0], &dailyTempOvertime[0]);
+   	gr->SetTitle("Daily Temperatures over time");
+   	gr->Draw("AP");
 	
 }

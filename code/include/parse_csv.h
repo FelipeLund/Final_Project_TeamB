@@ -8,7 +8,7 @@ std::vector<double> extract_temp_for_month_day (const std::string test_string, c
 
 std::vector<double> maxTempInYears(std::string& filename);
 
-std::vector<int> getYearsList(const std::string& filename);
+std::vector<double> getYearsList(const std::string& filename);
 
 std::vector<std::string> getAllDatums(const std::string& filename);
 
