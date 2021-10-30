@@ -9,6 +9,7 @@
 #include <TF1.h>
 #include <TStyle.h>
 #include <TCanvas.h>
+#include <TGraph.h>
 
 class tempTrender {
 	public:
