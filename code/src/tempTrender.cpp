@@ -9,6 +9,21 @@ tempTrender::tempTrender(const std::string& filePath) {
 	_filepath = filePath;
 }
 
+//Function to create hisotgrams
+void tempTrender::create_hist(std::vector<double> vector_of_degrees) const{
+	TH1I* hist = new TH1I("temperature", "Temperature;Temperature[#circC];Entries", 100, -20, 40);
+	hist->SetFillColor(kRed + 1); //red color
+	//adding all elements to histogram
+	for (double element : vector_of_degrees){
+    	hist->Fill(element);
+	}
+	double mean = hist->GetMean(); //The mean of the distribution
+	double stdev = hist->GetRMS(); //The standard deviation
+	TCanvas* can = new TCanvas();
+
+	hist->Draw();
+}
+
 void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const{
 	std::cout << "Starting tempOnDay Function... \n";
 
@@ -33,6 +48,11 @@ void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const{
 
 	// Printing to make sure things work
 	std::cout << "Now we start making the hist... \n";
+
+	// Creating and printing the histogram
+	create_hist(info_vector);
+	
+	std::cout << "histogram??... \n";
 }
 
 
