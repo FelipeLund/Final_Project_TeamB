@@ -4,6 +4,12 @@
 #include <string>
 #include "parse_csv.h"
 
+// Root canvas includes 
+#include <TH1F.h>
+#include <TF1.h>
+#include <TStyle.h>
+#include <TCanvas.h>
+
 class tempTrender {
 	public:
 		std::string _filepath;
@@ -17,14 +23,11 @@ class tempTrender {
 	void maxTempOverTime() const;
 
 	void dailyTempOverTime() const;
+
+	//Function to create hisotgrams
+	void create_hist(std::vector<double> vector_of_degrees) const;
 	
-	// void tempOnDay(int dateToCalculate) const; //Make a histogram of the temperature on this date
 
-	// void tempPerDay() const; //Make a histogram of the average temperature of each day of the year
-
-	// void hotCold() const; //Make a histogram of the hottest and coldest day of the year
-
-	// void tempPerYear(int yearToExtrapolate) const; //Make a histogram of average temperature per year, then fit and extrapolate to the given year
 
 	private:
 	
