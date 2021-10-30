@@ -9,3 +9,4 @@
 
 
 [29-10-21] The three that provide the data that will be used to create the plot of the results are ready. We will make it so that one can initialize a tempTrender object (lets call it lund) in root by giving a filepath. Then with lund.tempOnDay(int day, int month) then it would run all functions to fetch the data and then plot a histogram.
+A create_hist()-function was also implemented; when called with a vector as input, it prints the histogram corresponding to the data in given vector.
