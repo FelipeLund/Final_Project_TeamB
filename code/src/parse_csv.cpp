@@ -34,8 +34,8 @@ std::vector<double> extract_temp_for_month_day (const std::string test_string, c
     return info_vector;
 }
 
-std::vector<int> getYearsList(const std::string& filename){
-    std::vector<int> years_vector;
+std::vector<double> getYearsList(const std::string& filename){
+    std::vector<double> years_vector;
 
     // Opening file and specifying variables for columns
 	io::CSVReader<4> in(filename);
@@ -61,7 +61,7 @@ std::vector<int> getYearsList(const std::string& filename){
 
 std::vector<double> maxTempInYears(std::string& filename){
     std::vector<double> max_temp_vector;
-    std::vector<int> years = getYearsList(filename);
+    std::vector<double> years = getYearsList(filename);
 
     // Opening file and specifying variables for columns
 	io::CSVReader<4> in(filename);
