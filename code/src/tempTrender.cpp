@@ -77,6 +77,10 @@ void tempTrender::maxTempOverTime()const {
    	gr->SetTitle("Max Temperatures every year");
 	gr->GetXaxis()->SetTitle("Time [y]");
 	gr->GetYaxis()->SetTitle("Max Temperature [#circ C]");
+	gr->SetLineColor(6);
+    //gr->SetLineWidth(2);
+    gr->SetMarkerColor(4);
+    gr->SetMarkerStyle(5);
    	gr->Draw();
 
 
@@ -100,6 +104,10 @@ void tempTrender::dailyTempOverTime()const{
    	gr->SetTitle("Average Daily Temperatures over time");
 	gr->GetXaxis()->SetTitle("Time [d]");
 	gr->GetYaxis()->SetTitle("Average Temperature [#circ C]");
+	gr->SetLineColor(6);
+    //gr->SetLineWidth(2);
+    gr->SetMarkerColor(4);
+    //gr->SetMarkerStyle(5); //looks too cluttered 
    	gr->Draw("AP");
 	
 }
