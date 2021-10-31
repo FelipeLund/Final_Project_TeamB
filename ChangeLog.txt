@@ -13,4 +13,5 @@ A create_hist()-function was also implemented; when called with a vector as inpu
 
 [30-10-21] Moved around histogram function to correct file, and added plotting functionality to all functions. Fixed some variable declarations that was in conflict with the plotting.
 
-[31-10-21] Updated the cleaning script. Made the files look cleaner and added additional comments. 
+[31-10-21] Updated the cleaning script. Made the files look cleaner and added additional comments. All the CleanCity.csv files to be used are also stored in code/ClnData for easier access. 
+
