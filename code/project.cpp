@@ -32,4 +32,6 @@ void project() {
 	// Plotting daily temperature over time
 	t.dailyTempOverTime();
 
+	std::cout << "---------------------- Done! ----------------------\n";
+
 }
