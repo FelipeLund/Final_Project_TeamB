@@ -20,8 +20,13 @@ void rootlogon() {
 
   // Tanvir's path: /home/tanvir27/Final_Project_TeamB/code
 
-  gSystem->AddIncludePath("-I/home/tanvir27/Final_Project_TeamB/code/include");
-  gSystem->AddIncludePath("-I/home/tanvir27/Final_Project_TeamB/code/external/include");	
+  	//gSystem->AddIncludePath("-I/home/tanvir27/Final_Project_TeamB/code/include");
+  	//gSystem->AddIncludePath("-I/home/tanvir27/Final_Project_TeamB/code/external/include");	
+
+	// Eleftheria's path: /home/ekosta/Final_Project_TeamB/Final_Project_TeamB/code
+
+	gSystem->AddIncludePath("-I/home/ekosta/Final_Project_TeamB/Final_Project_TeamB/code/include");
+  	gSystem->AddIncludePath("-I/home/ekosta/Final_Project_TeamB/Final_Project_TeamB/code/external/include");	
 
   //  You can add multiple flags if you have multiple directories to add
   // gSystem->AddIncludePath("-I/home/einarelen/project/include -I/home/einarelen/project/external/include");
