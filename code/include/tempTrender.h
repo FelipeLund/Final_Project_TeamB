@@ -20,12 +20,12 @@ class tempTrender {
 
 	// Make a histogram of the temperature on this day
 	void tempOnDay(int monthToCalculate, int dayToCalculate) const; 
-
+	// Make a plot of the maximum temperatures of the given city over the years
 	void maxTempOverTime() const;
-
+	//Make a plot of the mean temperature of the given day over time
 	void dailyTempOverTime() const;
 
-	//Function to create hisotgrams
+	//Function to create histograms
 	void create_hist(std::vector<double> vector_of_degrees) const;
 	
 
@@ -33,4 +33,4 @@ class tempTrender {
 	private:
 	
 };
-#endif
+#endif //TEMPTRENDER_H
