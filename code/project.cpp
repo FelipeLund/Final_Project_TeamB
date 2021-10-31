@@ -5,7 +5,7 @@
 
 
 
-int main() {
+void project() {
 	std::string pathToFile; //path to data file
 
 	//Interface and interactive
@@ -32,5 +32,4 @@ int main() {
 	// Plotting daily temperature over time
 	t.dailyTempOverTime();
 
-	return 0;	
 }
