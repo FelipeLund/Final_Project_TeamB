@@ -107,7 +107,7 @@ void tempTrender::dailyTempOverTime()const{
 
 	TGraph *gr = new TGraph(n, &days_passed[0], &dailyTempOvertime[0]);
    	gr->SetTitle("Average Daily Temperatures over time");
-	gr->GetXaxis()->SetTitle("Time [days]");
+	gr->GetXaxis()->SetTitle("Time [#days passed from first record]");
 	gr->GetYaxis()->SetTitle("Average Temperature [#circ C]");
 	gr->SetLineColor(6);
     gr->SetMarkerColor(4);
