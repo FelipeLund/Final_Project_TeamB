@@ -112,6 +112,5 @@ void tempTrender::dailyTempOverTime()const{
 	gr->SetLineColor(6);
     gr->SetMarkerColor(4);
    	gr->Draw("AP");
-	
-	std::cout << "---------------------- Done! ----------------------\n";
+
 }
