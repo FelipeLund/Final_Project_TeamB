@@ -74,7 +74,6 @@ std::vector<double> maxTempInYears(std::string& filename){
 
     // For each year, append all temps to a vector called temps, find the max of temps
     // Append the max of temps to max_temp_vector
-    // NOTE: it will miss the last year!!!!
     for (int year : years){
         std::vector<double> temps; 
         while(in.read_row(datum, tid, temp, quality)){
@@ -92,6 +91,38 @@ std::vector<double> maxTempInYears(std::string& filename){
     return max_temp_vector;
 }
 
+//Code for finding the minimun temperature of the year
+	std::vector<double> minTempInYears(std::string& filename){
+    std::vector<double> min_temp_vector;
+    std::vector<double> years = getYearsList(filename);
+
+    // Opening file and specifying variables for columns
+	io::CSVReader<4> in(filename);
+	in.read_header(io::ignore_extra_column, "Datum", "Tid (UTC)", "Lufttemperatur", "Kvalitet");
+
+    //Specifying variables in each column
+	std::string datum{}; std::string tid{};
+	std::string quality{}; double temp;
+
+
+    // For each year, append all temps to a vector called temps, find the min of temps
+    // Append the min of temps to min_temp_vector
+    for (int year : years){
+        std::vector<double> temps; 
+        while(in.read_row(datum, tid, temp, quality)){
+            
+            if (stoi(datum.substr(0,4)) == year){
+				temps.push_back(temp);
+            };
+			if (stoi(datum.substr(0,4)) != year){  
+            break;}
+		};
+		auto min = *min_element(std::begin(temps), std::end(temps));
+        min_temp_vector.push_back(min);
+    };
+
+    return min_temp_vector;
+}
 
 std::vector<std::string> getAllDatums(const std::string& filename){
     // Opening file and specifying variables for columns
