@@ -23,9 +23,13 @@ int main() {
 	int mm, dd;
 	std::cin >> mm >> dd;
 	
-
+	// Creating the histogram for specified date
 	t.tempOnDay(mm, dd);
+
+	// Plotting the maximum teperature for each year
 	t.maxTempOverTime();
+
+	// Plotting daily temperature over time
 	t.dailyTempOverTime();
 
 	return 0;	
