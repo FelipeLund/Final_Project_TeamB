@@ -20,6 +20,10 @@ void tempTrender::create_hist(std::vector<double> vector_of_degrees) const{
 	}
 	double mean = hist->GetMean(); //The mean of the distribution
 	double stdev = hist->GetRMS(); //The standard deviation
+
+	hist->GetXaxis()->SetTitle("Temperature [#circ C]");
+	hist->GetYaxis()->SetTitle("Counts");
+
 	TCanvas* c1 = new TCanvas();
 
 	hist->Draw();
@@ -71,6 +75,8 @@ void tempTrender::maxTempOverTime()const {
 	max_temps.pop_back();
 	TGraph *gr = new TGraph(n, &years[0], &max_temps[0]);
    	gr->SetTitle("Max Temperatures every year");
+	gr->GetXaxis()->SetTitle("Time [y]");
+	gr->GetYaxis()->SetTitle("Max Temperature [#circ C]");
    	gr->Draw();
 
 
@@ -88,10 +94,12 @@ void tempTrender::dailyTempOverTime()const{
 	std::vector<double> days_passed(n);
 	std::iota(days_passed.begin(), days_passed.end(), start);
 	TCanvas* c3 = new TCanvas();
-	c3->SetCanvasSize(3000, 500); 
+	c3->SetCanvasSize(3000, 500); //width,height
 
 	TGraph *gr = new TGraph(n, &days_passed[0], &dailyTempOvertime[0]);
-   	gr->SetTitle("Daily Temperatures over time");
+   	gr->SetTitle("Average Daily Temperatures over time");
+	gr->GetXaxis()->SetTitle("Time [d]");
+	gr->GetYaxis()->SetTitle("Average Temperature [#circ C]");
    	gr->Draw("AP");
 	
 }
