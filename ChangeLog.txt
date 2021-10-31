@@ -12,3 +12,5 @@
 A create_hist()-function was also implemented; when called with a vector as input, it prints the histogram corresponding to the data in given vector.
 
 [30-10-21] Moved around histogram function to correct file, and added plotting functionality to all functions. Fixed some variable declarations that was in conflict with the plotting.
+
+[31-10-21] Updated the cleaning script. Made the files look cleaner and added additional comments. 
