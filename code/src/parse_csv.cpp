@@ -78,13 +78,15 @@ std::vector<double> maxTempInYears(std::string& filename){
     for (int year : years){
         std::vector<double> temps; 
         while(in.read_row(datum, tid, temp, quality)){
-            temps.push_back(temp);
-            if (stoi(datum.substr(0,4)) != year){
-                auto max = *max_element(std::begin(temps), std::end(temps));
-                max_temp_vector.push_back(max);
-                break;
+            
+            if (stoi(datum.substr(0,4)) == year){
+				temps.push_back(temp);
             };
-	    };
+			if (stoi(datum.substr(0,4)) != year){  
+            break;}
+		};
+		auto max = *max_element(std::begin(temps), std::end(temps));
+        max_temp_vector.push_back(max);
     };
 
     return max_temp_vector;

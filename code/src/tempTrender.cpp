@@ -72,7 +72,7 @@ void tempTrender::maxTempOverTime()const {
 	std::vector<double> years = getYearsList(filename);
 	TCanvas* c2 = new TCanvas();
 	int n = years.size();
-	max_temps.pop_back();
+	//max_temps.pop_back();
 	TGraph *gr = new TGraph(n, &years[0], &max_temps[0]);
    	gr->SetTitle("Max Temperatures every year");
 	gr->GetXaxis()->SetTitle("Time [y]");
