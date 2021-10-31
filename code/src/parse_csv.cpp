@@ -6,8 +6,6 @@
 #include <algorithm>
 #include <numeric>
 
-//parsing the csv file with nuclei list
-
 void some_func(const int num){
     std::cout << "some_func_called to print " << num << "\n"; 
 }
@@ -104,7 +102,7 @@ std::vector<double> maxTempInYears(std::string& filename){
 	std::string datum{}; std::string tid{};
 	std::string quality{}; double temp;
 
-
+//Have to decide if we are plotting only the hottest or both the hottest and coldest temperatures over the years
     // For each year, append all temps to a vector called temps, find the min of temps
     // Append the min of temps to min_temp_vector
     for (int year : years){
