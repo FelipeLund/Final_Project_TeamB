@@ -22,7 +22,7 @@ class tempTrender {
 	void tempOnDay(int monthToCalculate, int dayToCalculate) const; 
 	// Make a plot of the maximum temperatures of the given city over the years
 	void maxTempOverTime() const;
-	//Make a plot of the mean temperature of the given day over time
+	//Make a plot of the average temperature over time
 	void dailyTempOverTime() const;
 
 	//Function to create histograms
