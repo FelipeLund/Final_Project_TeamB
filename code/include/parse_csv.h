@@ -12,6 +12,8 @@ std::vector<int> max_temp_positions(const std::string& filename);
 
 std::vector<double> getYearsList(const std::string& filename);
 
+std::vector<double> minTempInYears(std::string& filename);
+
 std::vector<std::string> getAllDatums(const std::string& filename);
 
 std::vector<double> getDailyTempOverTime(const std::string& filename);
