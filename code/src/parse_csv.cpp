@@ -92,7 +92,7 @@ std::vector<double> maxTempInYears(std::string& filename){
 }
 
 
-//Code for finding the minimun temperature of the year
+//Code for finding the minimun temperature of the years
 	std::vector<double> minTempInYears(std::string& filename){
     std::vector<double> min_temp_vector;
     std::vector<double> years = getYearsList(filename);
@@ -243,6 +243,9 @@ std::vector<int> max_temp_positions(const std::string& filename){
         dailyTempOverTime.push_back(average);
     }
 */
+
+
+
 
     // Creating vectors to be used
     std::vector<double> max_temp_vector;
