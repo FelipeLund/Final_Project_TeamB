@@ -16,5 +16,7 @@ std::vector<std::string> getAllDatums(const std::string& filename);
 
 std::vector<double> getDailyTempOverTime(const std::string& filename);
 
+int getIndexOfTemp(std::vector<double> v, double K);
+
 
 #endif // PARSE_CSV_H
