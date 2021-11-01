@@ -29,6 +29,12 @@ void project() {
 	// Plotting the maximum teperature for each year
 	t.maxTempOverTime();
 
+	//Plotting the minimum temperature for each year
+	//this will create the histogram for the coldest days over the years. 
+	//I will uncomment it when the code in the tempTrender 
+	//will be ready
+	//t.minTempOverYears();
+
 	// Plotting daily temperature over time
 	t.dailyTempOverTime();
 
