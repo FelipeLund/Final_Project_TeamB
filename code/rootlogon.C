@@ -13,20 +13,12 @@ void rootlogon() {
   // Tell the compiler where to look for headers. Use the same kinds of flags
   //  that you've seen in the course. Note that paths cannot be relative or use
   
-  // Simon's path: /home/stropp/Project/Final_Project_TeamB/code/include
-
-  //gSystem->AddIncludePath("-I/home/stropp/Project/Final_Project_TeamB/code/include");
-  //gSystem->AddIncludePath("-I/home/stropp/Project/Final_Project_TeamB/code/external/include");
-
-  // Tanvir's path: /home/tanvir27/Final_Project_TeamB/code
-
-  	//gSystem->AddIncludePath("-I/home/tanvir27/Final_Project_TeamB/code/include");
-  	//gSystem->AddIncludePath("-I/home/tanvir27/Final_Project_TeamB/code/external/include");	
-
+	// Simon's path: /home/stropp/Project/Final_Project_TeamB/code/include
+    // Tanvir's path: /home/tanvir27/Final_Project_TeamB/code
 	// Eleftheria's path: /home/ekosta/Final_Project_TeamB/Final_Project_TeamB/code
 
-	gSystem->AddIncludePath("-I/home/ekosta/Final_Project_TeamB/Final_Project_TeamB/code/include");
-  	gSystem->AddIncludePath("-I/home/ekosta/Final_Project_TeamB/Final_Project_TeamB/code/external/include");	
+	gSystem->AddIncludePath("-I/home/stropp/Project/Final_Project_TeamB/code/include");
+  	gSystem->AddIncludePath("-I/home/stropp/Project/Final_Project_TeamB/code/external/include");	
 
   //  You can add multiple flags if you have multiple directories to add
   // gSystem->AddIncludePath("-I/home/einarelen/project/include -I/home/einarelen/project/external/include");

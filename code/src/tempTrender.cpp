@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
 #include <numeric>
+#include <vector>
 #include "tempTrender.h"
+#include "parse_csv.h"
 
 tempTrender::tempTrender(const std::string& filePath) {
 	std::cout << ">>> The user supplied " << filePath <<" as the path to the data file.\n\n";
@@ -78,7 +80,6 @@ void tempTrender::maxTempOverTime()const {
 	std::vector<double> years = getYearsList(filename);
 	TCanvas* c2 = new TCanvas();
 	int n = years.size();
-	//max_temps.pop_back();
 	TGraph *gr = new TGraph(n, &years[0], &max_temps[0]);
    	gr->SetTitle("Max Temperatures every year");
 	gr->GetXaxis()->SetTitle("Time [y]");
@@ -88,10 +89,8 @@ void tempTrender::maxTempOverTime()const {
     gr->SetMarkerColor(4);
     gr->SetMarkerStyle(5);
    	gr->Draw();
-
-
-
 }
+
 
 void tempTrender::dailyTempOverTime()const{
 	std::vector<double> dailyTempOvertime = getDailyTempOverTime(_filepath);
@@ -112,5 +111,25 @@ void tempTrender::dailyTempOverTime()const{
 	gr->SetLineColor(6);
     gr->SetMarkerColor(4);
    	gr->Draw("AP");
+
+	// Finding the time between each year's max temperature
+	std::vector<int> indices = max_temp_positions(_filepath);
+	std:vector<int> diff;
+	for (int i=1; i<indices.size(); i++){
+		diff.push_back(days_passed[i]-days_passed[i-1]);
+	}
+
+	std::vector<int> x(indices.size());
+	std::iota(x.begin(), x.end(), start);
+	
+	TCanvas* c4 = new TCanvas();
+	TGraph *gr2 = new TGraph(n, &x[0], &diff[0]);
+   	gr2->SetTitle("max temp time passed diff");
+	gr2->GetXaxis()->SetTitle("Time [..]");
+	gr2->GetYaxis()->SetTitle("diff");
+	gr2->SetLineColor(6);
+    gr2->SetMarkerColor(4);
+   	gr2->Draw("AP");
+	
 
 }
