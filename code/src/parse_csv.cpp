@@ -148,6 +148,34 @@ std::vector<std::string> getAllDatums(const std::string& filename){
     return all_datums;
 }
 
+using namespace std;
+ 
+// Function to print the
+// index of an element
+int getIndexOfTemp(std::vector<double> v, double K){
+    // v- vector supplied, K- element to look for
+    auto it = find(v.begin(), v.end(), K);
+ 
+    // If element was found
+    if (it != v.end())
+    {
+     
+        // calculating the index
+        // of K
+        int index = it - v.begin();
+        //cout << index << endl; // uncomment to print the index value for checking
+		return index;
+    }
+    else {
+        // If the element is not
+        // present in the vector
+        cout << "element not in list" << endl;
+		return -1;
+	
+    }
+}
+
+
 std::vector<double> getDailyTempOverTime(const std::string& filename){
     // Opening file and specifying variables for columns
 	io::CSVReader<4> in(filename);
