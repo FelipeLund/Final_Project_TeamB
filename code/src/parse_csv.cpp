@@ -208,6 +208,56 @@ std::vector<double> getDailyTempOverTime(const std::string& filename){
 }
 
 
+// Function that gets day for max daily average temperature
+std::vector<std::string> Day_MaxDailyAvgTemp_Year(const std::string& filename){
+	// Opening file and specifying variables for columns
+	io::CSVReader<4> in(filename);
+	in.read_header(io::ignore_extra_column, "Datum", "Tid (UTC)", "Lufttemperatur", "Kvalitet");
+
+    //Specifying variables in each column
+	std::string datum{}; std::string tid{};
+	std::string quality{}; double temp;
+	
+	std::vector<double> max_avg_dailytemp_vector;
+	
+    std::vector<double> years = getYearsList(filename);
+    //std::vector<std::string> days = all_datum;
+    
+    std::vector<std::string> Day_MaxAvgTemp_Year;
+	in.read_row(datum, tid, temp, quality);
+	std::string date = datum;
+	
+	for (double year:years) {
+			std::vector<double> AvgDailyTempsYear;
+			std::vector<std::string> days{date};
+			
+			while(in.read_row(datum, tid, temp, quality)){
+			
+				if (year != stoi(datum.substr(0,4)))
+					{break;}
+				if (year == stoi(datum.substr(0,4))){			
+					std::vector<double> DailyTemps;
+					if (date==datum){
+						DailyTemps.push_back(temp);
+					}
+					if (date!=datum){
+						double average = accumulate(DailyTemps.begin(), DailyTemps.end(), 0.0) / (DailyTemps.size());
+						AvgDailyTempsYear.push_back(average);
+						days.push_back(date);
+						date=datum; //update date
+					}	
+				}				
+			}
+			auto max = *max_element(std::begin(AvgDailyTempsYear), std::end(AvgDailyTempsYear));
+        	max_avg_dailytemp_vector.push_back(max);	
+        	int index_max = getIndexOfTemp(AvgDailyTempsYear, max);
+        	std::string day_max = days[index_max];
+        	std::cout<< day_max;   
+        	Day_MaxAvgTemp_Year.push_back(day_max);        	     	
+		}	
+		return Day_MaxAvgTemp_Year;	
+	}
+
 // Function that finds indices of all years' max temp
 std::vector<int> max_temp_positions(const std::string& filename){
     // Opening file and specifying variables for columns
