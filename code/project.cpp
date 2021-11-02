@@ -33,7 +33,7 @@ void project() {
 	//this will create the histogram for the coldest days over the years. 
 	//I will uncomment it when the code in the tempTrender 
 	//will be ready
-	//t.minTempOverYears();
+	t.minTempOverYears();
 
 	// Plotting daily temperature over time
 	t.dailyTempOverTime();
