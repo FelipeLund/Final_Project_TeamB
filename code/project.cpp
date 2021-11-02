@@ -11,7 +11,7 @@ void project() {
 	//Interface and interactive
 	std::cout << "\n-------------------- Welcome! --------------------\n";
 	std::cout << "This program will: \n";
-	std::cout << "(1) Print a histogram of temperatures on a specific day through time. \n(2) Show a plot of the maximum temperature each year. \n(3) Show a plot of the mean temperature on every day throughout time.\n\n";
+	std::cout << "(1) Print a histogram of temperatures on a specific day through time. \n(2) Show 2 separates plots of the maximum and minimum temperatures each year. \n(3) Show a plot of the mean temperature on every day throughout time.\n\n";
 
 	std::cout << "First, enter the path of a clean data file (e.g. ./ClnData/CleanLund.csv): ";
 	std::cin >> pathToFile;
@@ -31,8 +31,6 @@ void project() {
 
 	//Plotting the minimum temperature for each year
 	//this will create the histogram for the coldest days over the years. 
-	//I will uncomment it when the code in the tempTrender 
-	//will be ready
 	t.minTempOverYears();
 
 	// Plotting daily temperature over time
