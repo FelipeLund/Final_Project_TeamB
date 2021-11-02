@@ -15,4 +15,5 @@ A create_hist()-function was also implemented; when called with a vector as inpu
 
 [31-10-21] Updated the cleaning script. Made the files look cleaner and added additional comments. All the CleanCity.csv files to be used are also stored in code/ClnData for easier access. 
 
-[01-11-21] Tried to create a function that finds the indices of all years' max temp. Also instead of plotting in a graph only the highest temperatures over the years, I will also plot the coldest temperatures(similar to 3.3 in the project description manual). 
+[01-11-21] Tried to create a function that finds the indices of all years' max temp. Also instead of plotting in a graph only the highest temperatures over the years, also plot the coldest temperatures will be made (similar to 3.3 in the project description manual). 
+Added a function in parse_csv.cpp that will allow to get index of the temperature in a vector.
