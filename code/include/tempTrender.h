@@ -22,12 +22,15 @@ class tempTrender {
 	void tempOnDay(int monthToCalculate, int dayToCalculate) const; 
 	// Make a plot of the maximum temperatures of the given city over the years
 	void maxTempOverTime() const;
+	//Making a plot of the minimum temperatures over the years
+	void minTempOverYears() const;
 	//Make a plot of the average temperature over time
 	void dailyTempOverTime() const;
 
+
 	//Function to create histograms
 	void create_hist(std::vector<double> vector_of_degrees) const;
-	
+
 
 
 	private:
