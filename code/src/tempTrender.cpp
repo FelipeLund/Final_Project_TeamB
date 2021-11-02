@@ -9,9 +9,10 @@ tempTrender::tempTrender(const std::string& filePath) {
 	std::cout << ">>> The user supplied " << filePath <<" as the path to the data file.\n\n";
 	//store in member variable called _filepath
 	_filepath = filePath;
+
 }
 
-//Function to create hisotgrams
+//Function to create histograms
 void tempTrender::create_hist(std::vector<double> vector_of_degrees) const{
 	TH1I* hist = new TH1I("temperature", "Temperature;Temperature[#circC];Entries", 100, -20, 40);
 	hist->SetFillColor(kRed + 1); //red color
@@ -29,7 +30,6 @@ void tempTrender::create_hist(std::vector<double> vector_of_degrees) const{
 
 	hist->Draw();
 }
-
 
 
 void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const{
@@ -63,19 +63,18 @@ void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const{
 	std::string filename = _filepath;
 	info_vector = extract_temp_for_month_day (test_string, filename);
 
-
 	// Creating and printing the histogram
 	std::cout << "Making the histogram...\n\n";
 	create_hist(info_vector);
+
 }
 
-
-void tempTrender::maxTempOverTime()const {
+void tempTrender::maxTempOverTime()const{
 	std::vector<double> max_temps;
 	std::string filename = _filepath;
 	max_temps = maxTempInYears(filename);
 	std::cout << "Plotting Max Temp Over Time... \n\n";
-	
+
 	// Plotting the data
 	std::vector<double> years = getYearsList(filename);
 	TCanvas* c2 = new TCanvas();
@@ -91,6 +90,26 @@ void tempTrender::maxTempOverTime()const {
    	gr->Draw();
 }
 
+void tempTrender::minTempOverYears()const{
+	std::vector<double> min_temps;
+	std::string filename = _filepath;
+	min_temps = minTempInYears(filename);
+	std::cout << "Plotting the minimum temperature Over Time... \n\n";
+
+	// Plotting the data
+	std::vector<double> years = getYearsList(filename);
+	TCanvas* c3 = new TCanvas();
+	int n = years.size();
+	TGraph *gr = new TGraph(n, &years[0], &min_temps[0]);
+   	gr->SetTitle("Min Temperatures every year");
+	gr->GetXaxis()->SetTitle("Time [y]");
+	gr->GetYaxis()->SetTitle("Min Temperature [#circ C]");
+	gr->SetLineColor(6);
+    //gr->SetLineWidth(2); //un-comment if thicker lines are preferred
+    gr->SetMarkerColor(4);
+    gr->SetMarkerStyle(5);
+   	gr->Draw();
+}
 
 void tempTrender::dailyTempOverTime()const{
 	std::vector<double> dailyTempOvertime = getDailyTempOverTime(_filepath);
@@ -101,8 +120,8 @@ void tempTrender::dailyTempOverTime()const{
 	double start = 1;
 	std::vector<double> days_passed(n);
 	std::iota(days_passed.begin(), days_passed.end(), start);
-	TCanvas* c3 = new TCanvas();
-	c3->SetCanvasSize(3000, 500); //width, height
+	TCanvas* c4 = new TCanvas();
+	c4->SetCanvasSize(3000, 500); //width, height
 
 	TGraph *gr = new TGraph(n, &days_passed[0], &dailyTempOvertime[0]);
    	gr->SetTitle("Average Daily Temperatures over time");
@@ -122,7 +141,7 @@ void tempTrender::dailyTempOverTime()const{
 	std::vector<int> x(indices.size());
 	std::iota(x.begin(), x.end(), start);
 	
-	TCanvas* c4 = new TCanvas();
+	TCanvas* c5 = new TCanvas();
 	TGraph *gr2 = new TGraph(n, &x[0], &diff[0]);
    	gr2->SetTitle("max temp time passed diff");
 	gr2->GetXaxis()->SetTitle("Time [..]");
