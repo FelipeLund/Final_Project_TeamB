@@ -20,5 +20,7 @@ std::vector<double> getDailyTempOverTime(const std::string& filename);
 
 int getIndexOfTemp(std::vector<double> v, double K);
 
+std::vector<std::string> Day_MaxDailyAvgTemp_Year(const std::string& filename);
+
 
 #endif // PARSE_CSV_H
