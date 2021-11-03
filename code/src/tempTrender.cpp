@@ -132,45 +132,42 @@ void tempTrender::dailyTempOverTime()const{
    	gr->Draw("AP");
 
 	// Finding the time between each year's max temperature
-	std::vector<int> indices = max_temp_positions(_filepath);
-	std:vector<int> diff;
-	for (int i=1; i<indices.size(); i++){
-		diff.push_back(days_passed[i]-days_passed[i-1]);
+	std::vector<string> MaxDaysList = Day_MaxDailyAvgTemp_Year(_filepath);  
+	std::vector<string> AllDays = getAllDatums(_filepath);
+	std::vector<int> DayNoList;
+	std::vector<int> DiffList;
+	int DayCounter=1;
+	int j=0; //index for MaxDaysList
+	for (std::string i:AllDays) {
+		if (i==MaxDaysList[j]) {
+			int diff = DayCounter-DayNoList[DayNoList.back()]; 
+			DiffList.push_back(diff);
+			DayNoList.push_back(DayCounter);
+			j++;
+		
+		}
+		DayCounter++;
 	}
 
-	std::vector<int> x(indices.size());
+	std::vector<int> x(DiffList.size());
 	std::iota(x.begin(), x.end(), start);
+
+	std::cout << DiffList.size()<< " " << x.size() << std::endl;
 	
 	TCanvas* c5 = new TCanvas();
-	TGraph *gr2 = new TGraph(n, &x[0], &diff[0]);
+	TGraph *gr2 = new TGraph(n, &x[0], &DiffList[0]);
    	gr2->SetTitle("max temp time passed diff");
-	gr2->GetXaxis()->SetTitle("Time [..]");
+	gr2->GetXaxis()->SetTitle("Time [years passed from first record]");
 	gr2->GetYaxis()->SetTitle("diff");
 	gr2->SetLineColor(6);
     gr2->SetMarkerColor(4);
    	gr2->Draw("AP");
 	
-
 }
 
 // Diff between days of max daily avg temperatures // uncomment and move this where you want
 
-//std::vector<string> MaxDaysList = Day_MaxDailyAvgTemp_Year(_filepath);  
-//std::vector<string> AllDays = getAllDatums(_filepath);
-//std::vector<int> DayNoList;
-//std::vector<int> DiffList;
-//int DayCounter=1;
-//int j=0; //index for MaxDaysList
-//for (i:AllDays) {
-//	if (i==MaxDaysList[j]) {
-//		int diff=DayCounter-DayNoList[DayNoList.back]; 
-//		DiffList.push_back(diff);
-//		DayNoList.push_back(DayCounter);
-//		j++;
-		
-//	}
-//	DayCounter++
-//}
+
 
 
 
