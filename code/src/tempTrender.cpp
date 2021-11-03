@@ -152,8 +152,9 @@ void tempTrender::dailyTempOverTime()const{
 		}
 		DayCounter++;
 	}
-	for (auto ptr2 = MaxDaysList.begin(); ptr2 != MaxDaysList.end(); ++ptr2) {
-		std::cout << *ptr2 << "," ;
+// uncomment next two lines to check/print what is in the MaxDaysList vector	
+//	for (auto ptr2 = MaxDaysList.begin(); ptr2 != MaxDaysList.end(); ++ptr2) {
+//		std::cout << *ptr2 << "," ;
 }
 	
 	std::vector<int> x(DiffList.size());
@@ -171,7 +172,6 @@ void tempTrender::dailyTempOverTime()const{
    	gr2->Draw("ACP");
 	
 }
-// Diff between days of max daily avg temperatures // uncomment and move this where you want
 
 
 
