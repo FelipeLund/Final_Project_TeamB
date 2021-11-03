@@ -150,8 +150,7 @@ std::vector<std::string> getAllDatums(const std::string& filename){
 
 using namespace std;
  
-// Function to print the
-// index of an element
+// Function to get the index of an double type element (in this project, the temperature) from a vector
 int getIndexOfTemp(std::vector<double> v, double K){
     int j=0;
     int index;
@@ -199,9 +198,11 @@ std::vector<double> getDailyTempOverTime(const std::string& filename){
 }
 
 
-// Function that gets day for max daily average temperature
+// Function that gets day for max daily average temperature for every year
 std::vector<std::string> Day_MaxDailyAvgTemp_Year(const std::string& filename){
+//if you want the max avg daily temperatures per year instead, use function call below and return max_avg_dailytemp_vector   
 //std::vector<double> Day_MaxDailyAvgTemp_Year(const std::string& filename){
+
 	// Opening file and specifying variables for columns
 	io::CSVReader<4> in(filename);
 	in.read_header(io::ignore_extra_column, "Datum", "Tid (UTC)", "Lufttemperatur", "Kvalitet");
@@ -213,12 +214,12 @@ std::vector<std::string> Day_MaxDailyAvgTemp_Year(const std::string& filename){
 	std::vector<double> max_avg_dailytemp_vector;
 	
     std::vector<double> years = getYearsList(filename);
-    //std::vector<std::string> days = all_datum;
     
     std::vector<std::string> Day_MaxAvgTemp_Year;
 	in.read_row(datum, tid, temp, quality);
 	std::string date = datum;
 	
+	// loop through each year
 	for (double year:years) {
 			std::vector<double> AvgDailyTempsYear;
 			std::vector<std::string> days{};
@@ -226,16 +227,18 @@ std::vector<std::string> Day_MaxDailyAvgTemp_Year(const std::string& filename){
 			
 			std::vector<double> DailyTemps;
 			
+			// read through file
 			while(in.read_row(datum, tid, temp, quality)){
-			
+				//see if reading current
 				if (year != stoi(datum.substr(0,4)))
 					{date=datum;
 					break;}
 				if (year == stoi(datum.substr(0,4))){			
-					
+					// for current year, check the date, store the temperature per day in a vector
 					if (date==datum){
 						DailyTemps.push_back(temp);
 					}
+					// if date changes, find the average for previous day and store in another vector
 					if (date!=datum){
 						double average = accumulate(DailyTemps.begin(), DailyTemps.end(), 0.0) / (DailyTemps.size());
 						AvgDailyTempsYear.push_back(average);
@@ -245,18 +248,17 @@ std::vector<std::string> Day_MaxDailyAvgTemp_Year(const std::string& filename){
 					}	
 				}				
 			}
-			
+			//find the max average temperature for current year and store in vector
 			auto max = *max_element(std::begin(AvgDailyTempsYear), std::end(AvgDailyTempsYear));
-			//double max2 = max;
-			
-        	max_avg_dailytemp_vector.push_back(max);	
+	       	max_avg_dailytemp_vector.push_back(max);	
+        	
+        	//find the index of the max temp found and use it to find the day for it
         	int index_max = getIndexOfTemp(AvgDailyTempsYear, max);     
         	std::string & day_max = days[index_max];   	
-        	//std::string day_max = days[index_max];
-        	//std::cout<< day_max;   
-        	Day_MaxAvgTemp_Year.push_back(day_max);  
+           	Day_MaxAvgTemp_Year.push_back(day_max);  //store the day for the max avg temp for that year
         	      	     	
-		}	
+		}
+		//return max_avg_dailytemp_vector;	// use this if the max temperature vector is desired instead of the day vector
 		return Day_MaxAvgTemp_Year;	
 	}
 
