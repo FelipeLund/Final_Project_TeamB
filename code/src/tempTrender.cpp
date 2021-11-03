@@ -133,14 +133,18 @@ void tempTrender::dailyTempOverTime()const{
 
 	// Finding the time between each year's max temperature
 	std::vector<string> MaxDaysList = Day_MaxDailyAvgTemp_Year(_filepath);  
+	//auto ptr = MaxDaysList.begin();
+	//std::cout << *ptr<< std::endl;
 	std::vector<string> AllDays = getAllDatums(_filepath);
-	std::vector<int> DayNoList;
+	std::vector<int> DayNoList{1};
 	std::vector<int> DiffList;
 	int DayCounter=1;
-	int j=0; //index for MaxDaysList
+	auto j=0; //index for MaxDaysList
+	auto ptr = MaxDaysList.begin();
 	for (std::string i:AllDays) {
-		if (i==MaxDaysList[j]) {
-			int diff = DayCounter-DayNoList[DayNoList.back()]; 
+		if (i==*(ptr+j)) {
+		    auto dptr=DayNoList.end();
+			int diff = DayCounter-*(dptr-1); 
 			DiffList.push_back(diff);
 			DayNoList.push_back(DayCounter);
 			j++;
@@ -148,23 +152,25 @@ void tempTrender::dailyTempOverTime()const{
 		}
 		DayCounter++;
 	}
-
+	for (auto ptr2 = MaxDaysList.begin(); ptr2 != MaxDaysList.end(); ++ptr2) {
+		std::cout << *ptr2 << "," ;
+}
+	
 	std::vector<int> x(DiffList.size());
 	std::iota(x.begin(), x.end(), start);
 
-	std::cout << DiffList.size()<< " " << x.size() << std::endl;
-	
+//	std::cout << " " <<DiffList.size()<< " " << x.size() << std::endl;
 	TCanvas* c5 = new TCanvas();
-	TGraph *gr2 = new TGraph(n, &x[0], &DiffList[0]);
+	TGraph *gr2 = new TGraph(DiffList.size(), &x[0], &DiffList[0]);
    	gr2->SetTitle("max temp time passed diff");
 	gr2->GetXaxis()->SetTitle("Time [years passed from first record]");
 	gr2->GetYaxis()->SetTitle("diff");
 	gr2->SetLineColor(6);
     gr2->SetMarkerColor(4);
-   	gr2->Draw("AP");
+    gr2->SetMarkerStyle(5);
+   	gr2->Draw("ACP");
 	
 }
-
 // Diff between days of max daily avg temperatures // uncomment and move this where you want
 
 
