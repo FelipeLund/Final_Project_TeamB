@@ -154,8 +154,7 @@ void tempTrender::dailyTempOverTime()const{
 	}
 // uncomment next two lines to check/print what is in the MaxDaysList vector	
 //	for (auto ptr2 = MaxDaysList.begin(); ptr2 != MaxDaysList.end(); ++ptr2) {
-//		std::cout << *ptr2 << "," ;
-}
+//		std::cout << *ptr2 << "," ;}
 	
 	std::vector<int> x(DiffList.size());
 	std::iota(x.begin(), x.end(), start);
