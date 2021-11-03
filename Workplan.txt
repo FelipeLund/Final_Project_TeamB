@@ -5,7 +5,7 @@ The three ideas that should produce results are:
 
 2. Length of seasons (fit with sinusoidal)
 
-3. Hottest or coldest temperature per year
+3. Hottest and coldest temperature per year
 
 
 
@@ -24,15 +24,16 @@ Functions Needed for Result 1:
 
 Functions Needed for Result 2:
 - Extract temperature for all days in year
-- Create histogram
+- Create plot
 - Sinusoidal fitting
-- Distancea between sinusoidal peaks (should be easy to see from fit)
+- Distance between sinusoidal peaks (should be easy to see from fit)
 
 
 Functions Needed for Result 3:
 - Get daily temperatures for a given year
 - Find maximum
-- Plot over time
+- Find minimum
+- Plot a multigraph over time
 
 
 
