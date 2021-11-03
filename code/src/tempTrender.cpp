@@ -152,3 +152,26 @@ void tempTrender::dailyTempOverTime()const{
 	
 
 }
+
+// Diff between days of max daily avg temperatures // uncomment and move this where you want
+
+//std::vector<string> MaxDaysList = Day_MaxDailyAvgTemp_Year(_filepath);  
+//std::vector<string> AllDays = getAllDatums(_filepath);
+//std::vector<int> DayNoList;
+//std::vector<int> DiffList;
+//int DayCounter=1;
+//int j=0; //index for MaxDaysList
+//for (i:AllDays) {
+//	if (i==MaxDaysList[j]) {
+//		int diff=DayCounter-DayNoList[DayNoList.back]; 
+//		DiffList.push_back(diff);
+//		DayNoList.push_back(DayCounter);
+//		j++;
+		
+//	}
+//	DayCounter++
+//}
+
+
+
+
