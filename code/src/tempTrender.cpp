@@ -69,6 +69,7 @@ void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const{
 
 }
 
+auto mg = new TMultiGraph("mg","mg");
 void tempTrender::maxTempOverTime()const{
 	std::vector<double> max_temps;
 	std::string filename = _filepath;
@@ -77,17 +78,18 @@ void tempTrender::maxTempOverTime()const{
 
 	// Plotting the data
 	std::vector<double> years = getYearsList(filename);
-	TCanvas* c2 = new TCanvas();
+	//TCanvas* c2 = new TCanvas();
 	int n = years.size();
-	TGraph *gr = new TGraph(n, &years[0], &max_temps[0]);
-   	gr->SetTitle("Max Temperatures every year");
-	gr->GetXaxis()->SetTitle("Time [y]");
-	gr->GetYaxis()->SetTitle("Max Temperature [#circ C]");
-	gr->SetLineColor(6);
+	auto *gr1 = new TGraph(n, &years[0], &max_temps[0]);
+   	gr1->SetTitle("Max Temperatures every year");
+	gr1->GetXaxis()->SetTitle("Time [y]");
+	gr1->GetYaxis()->SetTitle("Max Temperature [#circ C]");
+	gr1->SetLineColor(6);
     //gr->SetLineWidth(2); //un-comment if thicker lines are preferred
-    gr->SetMarkerColor(4);
-    gr->SetMarkerStyle(5);
-   	gr->Draw();
+    gr1->SetMarkerColor(4);
+    gr1->SetMarkerStyle(5);
+   	//gr1->Draw();
+	mg->Add(gr1,"lp");
 }
 
 void tempTrender::minTempOverYears()const{
@@ -100,15 +102,17 @@ void tempTrender::minTempOverYears()const{
 	std::vector<double> years = getYearsList(filename);
 	TCanvas* c3 = new TCanvas();
 	int n = years.size();
-	TGraph *gr = new TGraph(n, &years[0], &min_temps[0]);
-   	gr->SetTitle("Min Temperatures every year");
-	gr->GetXaxis()->SetTitle("Time [y]");
-	gr->GetYaxis()->SetTitle("Min Temperature [#circ C]");
-	gr->SetLineColor(6);
+	auto *gr2 = new TGraph(n, &years[0], &min_temps[0]);
+   	gr2->SetTitle("Min Temperatures every year");
+	gr2->GetXaxis()->SetTitle("Time [y]");
+	gr2->GetYaxis()->SetTitle("Min Temperature [#circ C]");
+	gr2->SetLineColor(6);
     //gr->SetLineWidth(2); //un-comment if thicker lines are preferred
-    gr->SetMarkerColor(4);
-    gr->SetMarkerStyle(5);
-   	gr->Draw();
+    gr2->SetMarkerColor(4);
+    gr2->SetMarkerStyle(5);
+   	gr2->Draw();
+	mg->Add(gr2,"cp");
+	mg->Draw("a");
 }
 
 void tempTrender::dailyTempOverTime()const{
