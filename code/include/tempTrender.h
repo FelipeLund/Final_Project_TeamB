@@ -10,6 +10,7 @@
 #include <TStyle.h>
 #include <TCanvas.h>
 #include <TGraph.h>
+#include "TMultiGraph.h"
 
 class tempTrender {
 	public:
