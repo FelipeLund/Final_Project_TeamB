@@ -87,9 +87,9 @@ void tempTrender::maxTempOverTime()const{
    	gr1->SetTitle("Max Temperatures every year");
 	gr1->GetXaxis()->SetTitle("Time [y]");
 	gr1->GetYaxis()->SetTitle("Max Temperature [#circ C]");
-	gr1->SetLineColor(6);
+	gr1->SetLineColor(2);
     //gr->SetLineWidth(2); //un-comment if thicker lines are preferred
-    gr1->SetMarkerColor(4);
+    gr1->SetMarkerColor(12);
     gr1->SetMarkerStyle(5);
 //Uncomment this if you want to get a plot of just 	
 //the maximum temperatures over the years
@@ -112,15 +112,18 @@ void tempTrender::minTempOverYears()const{
    	gr2->SetTitle("Min Temperatures every year");
 	gr2->GetXaxis()->SetTitle("Time [y]");
 	gr2->GetYaxis()->SetTitle("Min Temperature [#circ C]");
-	gr2->SetLineColor(6);
+	gr2->SetLineColor(4);
     //gr->SetLineWidth(2); //un-comment if thicker lines are preferred
-    gr2->SetMarkerColor(4);
+    gr2->SetMarkerColor(12);
     gr2->SetMarkerStyle(5);
    	gr2->Draw();
 //Command to add this plot to the multigraph
 	mg->Add(gr2,"cp");
+//Adding title
+	mg->SetTitle("Multigraph; Year; Max & Min temperatures");
 //Plotting the multigraph
 	mg->Draw("a");
+
 }
 
 void tempTrender::dailyTempOverTime()const{
