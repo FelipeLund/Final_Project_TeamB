@@ -68,7 +68,8 @@ void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const{
 	create_hist(info_vector);
 
 }
-
+//Creating a multigraph that will show in one plot 
+//the maximum and minimum temperatures over the years
 auto mg = new TMultiGraph("mg","mg");
 void tempTrender::maxTempOverTime()const{
 	std::vector<double> max_temps;
@@ -78,6 +79,8 @@ void tempTrender::maxTempOverTime()const{
 
 	// Plotting the data
 	std::vector<double> years = getYearsList(filename);
+//Uncomment this if you want to get a plot of just 	
+//the maximum temperatures over the years
 	//TCanvas* c2 = new TCanvas();
 	int n = years.size();
 	auto *gr1 = new TGraph(n, &years[0], &max_temps[0]);
@@ -88,7 +91,10 @@ void tempTrender::maxTempOverTime()const{
     //gr->SetLineWidth(2); //un-comment if thicker lines are preferred
     gr1->SetMarkerColor(4);
     gr1->SetMarkerStyle(5);
+//Uncomment this if you want to get a plot of just 	
+//the maximum temperatures over the years
    	//gr1->Draw();
+//Command to add this plot to the multigraph
 	mg->Add(gr1,"lp");
 }
 
@@ -111,7 +117,9 @@ void tempTrender::minTempOverYears()const{
     gr2->SetMarkerColor(4);
     gr2->SetMarkerStyle(5);
    	gr2->Draw();
+//Command to add this plot to the multigraph
 	mg->Add(gr2,"cp");
+//Plotting the multigraph
 	mg->Draw("a");
 }
 
