@@ -4,6 +4,7 @@
 #include <vector>
 #include <TLegend.h>
 #include <TStyle.h>
+#include <TLegendEntry.h>
 #include "tempTrender.h"
 #include "parse_csv.h"
 
@@ -33,15 +34,27 @@ void tempTrender::create_hist(std::vector<double> vector_of_degrees) const{
 //	hist->Draw();
 	
 	hist->Fit("gaus", "Q");
-	
+/*	
 	TLegend *leg = new TLegend(0.65, 0.75, 0.92, 0.92, "");
+	//leg->SetHeader("Gausian Fit");
 	leg->SetFillStyle(0); //Hollow fill (transparent)
 	leg->SetBorderSize(0); //Get rid of the border
-	leg->AddEntry(hist, "Gaussian Fit", "F"); //Use object title, draw fill
+	leg->AddEntry(hist, "", "F"); //Use object title, draw fill
+	//leg->AddEntry(hist, "Fit" );
 	//leg->AddEntry(, "A title", "F"); //Use custom title
 	hist->Draw();
 	leg->Draw(); //Legends are automatically drawn with "SAME"
+*/
 }
+
+/* TLegend *leg = new TLegend(0.1,0.7,0.48,0.9);
+   leg->SetHeader("The Legend Title");
+   leg->SetFillStyle(0); //Hollow fill (transparent)
+   leg->SetBorderSize(0); //Get rid of the border
+   leg->AddEntry(gr1,"Minimum temperatures over time","l");
+   //leg->AddEntry("gr","Graph with error bars","lep");
+   leg->Draw();
+*/
 
 void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const{
 
@@ -81,7 +94,9 @@ void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const{
 }
 //Creating a multigraph that will show in one plot 
 //the maximum and minimum temperatures over the years
+//defining legend for the min and max
 auto mg = new TMultiGraph("mg","mg");
+
 void tempTrender::maxTempOverTime()const{
 	std::vector<double> max_temps;
 	std::string filename = _filepath;
@@ -97,7 +112,7 @@ void tempTrender::maxTempOverTime()const{
 	auto *gr1 = new TGraph(n, &years[0], &max_temps[0]);
    	gr1->SetTitle("Max Temperatures every year");
 	gr1->GetXaxis()->SetTitle("Time [y]");
-	gr1->GetYaxis()->SetTitle("Max Temperature [#circ C]");
+	gr1->GetYaxis()->SetTitle("Max Temperature [#circC]");
 	gr1->SetLineColor(2);
     //gr->SetLineWidth(2); //un-comment if thicker lines are preferred
     gr1->SetMarkerColor(12);
@@ -122,19 +137,33 @@ void tempTrender::minTempOverYears()const{
 	auto *gr2 = new TGraph(n, &years[0], &min_temps[0]);
    	gr2->SetTitle("Min Temperatures every year");
 	gr2->GetXaxis()->SetTitle("Time [y]");
-	gr2->GetYaxis()->SetTitle("Min Temperature [#circ C]");
+	gr2->GetYaxis()->SetTitle("Min Temperature [#circC]");
 	gr2->SetLineColor(4);
     //gr->SetLineWidth(2); //un-comment if thicker lines are preferred
     gr2->SetMarkerColor(12);
     gr2->SetMarkerStyle(5);
    	gr2->Draw();
+   	TLegend *leg1 = new TLegend(0.4, 0.55, 0.72, 0.82, "");
+   	TLegend *leg2 = new TLegend(0.4, 0.45, 0.72, 0.62, "");
+   	leg1->SetFillStyle(0); //Hollow fill (transparent)
+	leg1->SetBorderSize(0); //Get rid of the border
+	leg2->SetFillStyle(0); //Hollow fill (transparent)
+	leg2->SetBorderSize(0); //Get rid of the border
+	TLegendEntry *le2 = leg2->AddEntry("gr2", "Min Temperatures" ,"");
+	le2->SetTextColor(kBlue);
+	TLegendEntry *le1 = leg1->AddEntry("gr1", "Max Temperatures" ,"");
+	le1->SetTextColor(kRed);
+	
 //Command to add this plot to the multigraph
 	mg->Add(gr2,"cp");
 //Adding title
-	mg->SetTitle("Multigraph; Year; Max & Min temperatures");
+	mg->SetTitle("Multigraph; Year; Temperatures [#circC]");
 //Plotting the multigraph
 	mg->Draw("a");
-
+	//leg2->AddEntry(gr2,"");
+	leg1->Draw();
+	leg2->Draw();	
+	
 }
 
 void tempTrender::dailyTempOverTime()const{
