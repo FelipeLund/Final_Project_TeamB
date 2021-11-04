@@ -2,7 +2,6 @@
 #define PARSE_CSV_H
 #include <fast-cpp-csv-parser/csv.h>
 
-void some_func(const int num);
 
 std::vector<double> extract_temp_for_month_day (const std::string test_string, const std::string& filename);
 
