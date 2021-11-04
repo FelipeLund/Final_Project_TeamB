@@ -21,3 +21,5 @@ Added a function in parse_csv.cpp that will allow to get index of the temperatur
 [02-11-21] A function Day_MaxDailyAvgTemp_Year has been created which gets the dates for the max average temperature per year.
 
 [03-11-21] Created a multigraph for max and min temperatures. Finally managed to create the functions that finds the indices of all years' max temperatures. A graph was made to show the results.
+
+[04-11-21] All the results are ready. Prepared the presentation and finished the report.
