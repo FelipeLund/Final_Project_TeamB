@@ -17,7 +17,7 @@ tempTrender::tempTrender(const std::string& filePath) {
 
 //Function to create histograms
 void tempTrender::create_hist(std::vector<double> vector_of_degrees) const{
-	TH1I* hist = new TH1I("temperature", "Temperature;Temperature[#circC];Entries", 100, -20, 40);
+	TH1I* hist = new TH1I("temperature", "Temperature;Temperature[#circC];Entries", 100, -30, 35);
 	hist->SetFillColor(38); //light blue color
 	//adding all elements to histogram
 	for (double element : vector_of_degrees){
