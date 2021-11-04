@@ -5,8 +5,8 @@
 #include <TLegend.h>
 #include <TStyle.h>
 #include <TLegendEntry.h>
-#include "tempTrender.h"
-#include "parse_csv.h"
+#include <tempTrender.h>
+#include <parse_csv.h>
 
 tempTrender::tempTrender(const std::string& filePath) {
 	std::cout << ">>> The user supplied " << filePath <<" as the path to the data file.\n\n";
@@ -18,7 +18,7 @@ tempTrender::tempTrender(const std::string& filePath) {
 //Function to create histograms
 void tempTrender::create_hist(std::vector<double> vector_of_degrees) const{
 	TH1I* hist = new TH1I("temperature", "Temperature;Temperature[#circC];Entries", 100, -20, 40);
-	hist->SetFillColor(38); //red color
+	hist->SetFillColor(38); //light blue color
 	//adding all elements to histogram
 	for (double element : vector_of_degrees){
     	hist->Fill(element);
@@ -34,27 +34,8 @@ void tempTrender::create_hist(std::vector<double> vector_of_degrees) const{
 //	hist->Draw();
 	
 	hist->Fit("gaus", "Q");
-/*	
-	TLegend *leg = new TLegend(0.65, 0.75, 0.92, 0.92, "");
-	//leg->SetHeader("Gausian Fit");
-	leg->SetFillStyle(0); //Hollow fill (transparent)
-	leg->SetBorderSize(0); //Get rid of the border
-	leg->AddEntry(hist, "", "F"); //Use object title, draw fill
-	//leg->AddEntry(hist, "Fit" );
-	//leg->AddEntry(, "A title", "F"); //Use custom title
-	hist->Draw();
-	leg->Draw(); //Legends are automatically drawn with "SAME"
-*/
 }
 
-/* TLegend *leg = new TLegend(0.1,0.7,0.48,0.9);
-   leg->SetHeader("The Legend Title");
-   leg->SetFillStyle(0); //Hollow fill (transparent)
-   leg->SetBorderSize(0); //Get rid of the border
-   leg->AddEntry(gr1,"Minimum temperatures over time","l");
-   //leg->AddEntry("gr","Graph with error bars","lep");
-   leg->Draw();
-*/
 
 void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const{
 
@@ -120,6 +101,7 @@ void tempTrender::maxTempOverTime()const{
 //Uncomment this if you want to get a plot of just 	
 //the maximum temperatures over the years
    	//gr1->Draw();
+
 //Command to add this plot to the multigraph
 	mg->Add(gr1,"lp");
 }
@@ -226,9 +208,3 @@ void tempTrender::dailyTempOverTime()const{
    	gr2->Draw("ACP");
 	
 }
-
-
-
-
-
-
