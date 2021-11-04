@@ -2,6 +2,8 @@
 #include <string>
 #include <numeric>
 #include <vector>
+#include <TLegend.h>
+#include <TStyle.h>
 #include "tempTrender.h"
 #include "parse_csv.h"
 
@@ -15,7 +17,7 @@ tempTrender::tempTrender(const std::string& filePath) {
 //Function to create histograms
 void tempTrender::create_hist(std::vector<double> vector_of_degrees) const{
 	TH1I* hist = new TH1I("temperature", "Temperature;Temperature[#circC];Entries", 100, -20, 40);
-	hist->SetFillColor(kRed + 1); //red color
+	hist->SetFillColor(38); //red color
 	//adding all elements to histogram
 	for (double element : vector_of_degrees){
     	hist->Fill(element);
@@ -23,14 +25,23 @@ void tempTrender::create_hist(std::vector<double> vector_of_degrees) const{
 	double mean = hist->GetMean(); //The mean of the distribution
 	double stdev = hist->GetRMS(); //The standard deviation
 
-	hist->GetXaxis()->SetTitle("Temperature [#circ C]");
+	hist->GetXaxis()->SetTitle("Temperature [#circC]");
 	hist->GetYaxis()->SetTitle("Counts");
 
 	TCanvas* c1 = new TCanvas();
 
+//	hist->Draw();
+	
+	hist->Fit("gaus", "Q");
+	
+	TLegend *leg = new TLegend(0.65, 0.75, 0.92, 0.92, "");
+	leg->SetFillStyle(0); //Hollow fill (transparent)
+	leg->SetBorderSize(0); //Get rid of the border
+	leg->AddEntry(hist, "Gaussian Fit", "F"); //Use object title, draw fill
+	//leg->AddEntry(, "A title", "F"); //Use custom title
 	hist->Draw();
+	leg->Draw(); //Legends are automatically drawn with "SAME"
 }
-
 
 void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const{
 
