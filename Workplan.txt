@@ -25,7 +25,6 @@ Functions Needed for Result 1:
 Functions Needed for Result 2:
 - Extract temperature for all days in year
 - Create plot
-- Sinusoidal fitting
 - Distance between sinusoidal peaks (should be easy to see from fit)
 
 
