@@ -1,6 +1,6 @@
 void rootlogon() {
-  gStyle->SetStatX(0.55); //positions the statistics box
-  gStyle->SetStatW(0.1);
+  gStyle->SetStatX(0.7); //positions the statistics box
+  gStyle->SetStatW(0.2);
   gStyle->SetOptStat(1); 
   gStyle->SetOptTitle(0); //Get rid of the title (good plots use legends instead)
   gStyle->SetTitleSize(0.05, "x"); //Use bigger text on the axes
