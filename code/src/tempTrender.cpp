@@ -179,7 +179,7 @@ void tempTrender::dailyTempOverTime()const{
 	TGraph *gr2 = new TGraph(DiffList.size(), &x[0], &DiffList[0]);
    	gr2->SetTitle("max temp time passed diff");
 	gr2->GetXaxis()->SetTitle("Time [years passed from first record]");
-	gr2->GetYaxis()->SetTitle("diff");
+	gr2->GetYaxis()->SetTitle("#days between yearly max temperature");
 	gr2->SetLineColor(6);
     gr2->SetMarkerColor(4);
     gr2->SetMarkerStyle(5);
