@@ -1,0 +1,105 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{import}
+
+\usepackage[OT1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[toc,page]{appendix}
+\usepackage{lipsum}
+\usepackage{siunitx}
+\usepackage{verbatim}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{physics}
+
+\usepackage{geometry}
+\usepackage{bm} %Bold math symbols using \bm
+\usepackage{authblk}
+\usepackage{amssymb}
+\usepackage{textcomp} %to get rid of warnings from gensymb
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage{hyperref} %\url{}
+\usepackage{xurl}
+\usepackage{braket} %dirac notation
+\usepackage{diagbox}%\backslashbox{}{} in tabular
+\usepackage{stackengine} %stacking (for making new commands)
+\usepackage{scalerel} %scaling (for making new commands)
+
+%Images
+\usepackage{titlepic}%title pic
+\usepackage{wrapfig}
+\usepackage{graphicx}%to manage images
+\usepackage{grffile}%to don't print the file name
+\usepackage{subfig}%two pictures in one \subfloat[name]{}
+\usepackage{pdfpages} %helsida \incudepdf{}
+
+
+\makeatletter
+\patchcmd{\@maketitle}{\LARGE \@title}{\fontsize{16}{19.2}\selectfont\@title}{}{}
+\makeatother
+
+\renewcommand\Authfont{\fontsize{12}{14.4}\selectfont}
+\renewcommand\Affilfont{\fontsize{9}{10.8}\itshape}
+
+\newgeometry{left=2.5cm, bottom=0.6cm, right=2.5cm, top=3.5cm}
+
+\title{MNXB01: Investigation of SMHI weather data}
+\author{Eleftheria Kosta, Felipe Abedrapo, Simon Tropp, Tanvir Sayed}
+\affil[1]{The Faculty of Science, Department of Physics, Lund University}
+
+
+\titlepic{
+\vspace{1cm}
+\includegraphics[width=0.9\linewidth]{Images/titlepage.png}}
+\renewcommand{\baselinestretch}{1.5}
+
+
+\begin{document}
+    \clearpage
+    \maketitle
+    \thispagestyle{empty}
+    \vspace*{\fill}
+    \begin{flushleft}
+        \textbf{Course responsible:} Oxana Smirnova\\
+    \end{flushleft}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=1.1]{Images/Lund logo science1.png}
+    \end{figure}
+    
+    \newpage
+    \newgeometry{left=2.5cm, bottom=2.5cm, right=2.5cm, top=2.5cm}
+
+\section{Introduction}
+\input{introduction}
+
+\newpage
+\section{Method}
+\subsection{Code Structure and External Libraries}
+\input{Method-functions/parsing_csv}
+
+\subsection{Cleaning the dataset files for use}
+\input{Method-functions/cleanData}
+
+\subsection{Histogram of temperatures on a specific day through time}
+\input{Method-functions/TempOnDay}
+
+
+\subsection{Investigating the max and min temperatures through the years}
+\input{Method-functions/MaxTempOverTime}
+
+
+\subsection{Investigating the daily mean temperature}
+\input{Method-functions/DailyTempOverTime}
+
+\newpage
+\section{Results \& Interpretations}
+\input{Results}
+
+
+\section{Conclusions \& Outlook}
+\input{conclusion}
+
+\end{document}
